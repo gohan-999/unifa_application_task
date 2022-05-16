@@ -1,0 +1,25 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<div>
+  <ul>
+    <% flash&.alert&.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <div>
+    <%= form_with model: @user, url: sessions_create_path, local: true do |f| %>
+
+      <%= f.label 'ユーザーID' %>
+      <%= f.text_field :login_id %>
+
+      <%= f.label 'パスワード' %>
+      <%= f.password_field :password %>
+
+      <%= f.submit 'ログイン' %>
+    <% end %>
+  </div>
+</div>
