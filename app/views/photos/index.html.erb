@@ -1,4 +1,13 @@
-<h1>test</h1>
-<%= @current_user %>
-
 <p><%= button_to 'ログアウト', logout_path, method: :delete %></p>
+
+<h1>写真一覧</h1>
+<p><%= link_to '写真を新規にアップロード', photos_new_path %></p>
+
+<section>
+<% @photos.each do |photo| %>
+  <div>
+    <%= photo.title %>
+    <%= image_tag "/uploaded_photos/#{photo.name}" %>
+  </div>
+<% end %>
+</section>

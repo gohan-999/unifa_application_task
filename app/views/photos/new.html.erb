@@ -1,0 +1,25 @@
+<p><%= button_to 'ログアウト', logout_path, method: :delete %></p>
+
+<h1>写真アップロード</h1>
+
+<div>
+  <ul>
+    <% @photo.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+    <%= form_with model: @photo, url: photos_create_path, local: true do |f| %>
+      <%= f.label 'タイトル' %>
+      <%= f.text_field :title %>
+
+      <%= f.label '画像ファイル' %>
+      <%= f.file_field :updated_file %>
+
+      <%= f.submit 'アップロード' %>
+    <% end %>
+    <%= link_to 'キャンセル', photos_index_path %>
+</div>
+
