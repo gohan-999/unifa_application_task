@@ -2,11 +2,15 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      photo: 写真
     attributes:
       user:
         login_id: ユーザーID
         password: パスワード
         not_exist_user: ''
+      photo:
+        title: タイトル
+        updated_file: 画像ファイル
     errors:
       models:
         user:
