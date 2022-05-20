@@ -1,5 +1,4 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<h1>ログイン</h1>
 
 <div>
   <ul>
@@ -10,16 +9,16 @@
 </div>
 
 <div>
-  <div>
-    <%= form_with model: @user, url: sessions_create_path, local: true do |f| %>
-
+  <%= form_with model: @user, url: sessions_create_path, local: true do |f| %>
+    <div>
       <%= f.label 'ユーザーID' %>
       <%= f.text_field :login_id %>
-
+    </div>
+    <div>
       <%= f.label 'パスワード' %>
       <%= f.password_field :password %>
+    </div>
 
-      <%= f.submit 'ログイン' %>
-    <% end %>
-  </div>
+    <p><%= f.submit 'ログインする' %></p>
+  <% end %>
 </div>
