@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.6.9
-RUN apt-get update -qq && apt-get install -y nodejs npm && npm install --global yarn
+RUN apt-get update -qq && apt-get install -y nodejs npm vim && npm install --global yarn
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
