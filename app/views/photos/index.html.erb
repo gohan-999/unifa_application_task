@@ -1,6 +1,9 @@
 <p><%= button_to 'ログアウト', logout_path, method: :delete %></p>
 
 <h1>写真一覧</h1>
+<% unless session[:access_token] %>
+  <p><%= link_to 'MyTweetAppと連携', link_accounts_authorize_my_tweet_app_path %></p>
+<% end %>
 <p><%= link_to '写真を新規にアップロード', photos_new_path %></p>
 
 <section>
@@ -8,6 +11,9 @@
   <div>
     <%= photo.title %>
     <%= image_tag "/uploaded_photos/#{photo.name}" %>
+    <% if session[:access_token] %>
+        <%= button_to 'tweetする', link_accounts_post_tweet_path, params: { id: photo.id } %>
+    <% end %>
   </div>
 <% end %>
 </section>
