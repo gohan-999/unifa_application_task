@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        login_id: ユーザーID
+        password: パスワード
+        not_exist_user: ''
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: が入力されていません
