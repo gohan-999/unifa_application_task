@@ -8,13 +8,15 @@ class SessionsController < ApplicationController
     @user = User.find_by(login_id: params[:user][:login_id])
     if @user&.authenticate(params[:user][:password])
       login(@user)
-      redirect_to photos_index_path
-    else
-      @user ||= User.new(user_params)
-      @user.valid?
-      flash.alert = @user.errors.full_messages
-      redirect_to sessions_new_path
+      redirect_to photos_index_path and return
     end
+
+    @user ||= User.new(user_params)
+    @user.password = params[:user][:password] if @user.password.blank?
+    @user.valid?
+    @user.errors.add(:not_exist_user, '入力したユーザーIDとパスワードが一致するユーザーがいませんでした。') if @user.errors.blank?
+
+    render 'new'
   end
 
   def destroy

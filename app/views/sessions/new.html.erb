@@ -2,20 +2,20 @@
 
 <div>
   <ul>
-    <% flash&.alert&.each do |message| %>
+    <% @user.errors.full_messages.uniq.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
 </div>
 
 <div>
-  <%= form_with model: @user, url: sessions_create_path, local: true do |f| %>
+  <%= form_with model: @user, url: sessions_create_path, method: :post, local: true do |f| %>
     <div>
-      <%= f.label 'ユーザーID' %>
+      <%= f.label :login_id %>
       <%= f.text_field :login_id %>
     </div>
     <div>
-      <%= f.label 'パスワード' %>
+      <%= f.label :password %>
       <%= f.password_field :password %>
     </div>
 
